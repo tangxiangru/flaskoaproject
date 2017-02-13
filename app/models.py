@@ -130,7 +130,7 @@ class User(UserMixin, db.Model):
     def generate_reset_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'reset': self.id})
-    #重置密码
+#重置密码
     def reset_password(self, token, new_password):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
@@ -222,6 +222,7 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     @staticmethod
+
     def generate_fake(count=100):
         from random import seed, randint
         import forgery_py
@@ -233,5 +234,7 @@ class Post(db.Model):
             p = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 5)),
                      timestamp=forgery_py.date.date(True),
                      author=u)
+
+
         db.session.add(p)
         db.session.commit()

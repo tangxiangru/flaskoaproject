@@ -7,7 +7,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app.models import User
 from app.decorators import admin_required
 
-登录账户
+#登录账户
 @api.route('/login',methods=['GET','POST'])
 def login() :
     email = request.get_json().get("email")
